@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Node App</title>
+    <style>
+        ul {
+            list-style-type: none;
+        }
+        ul li {
+            margin-bottom: 15px;
+            border-bottom: 3px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>User Info</h1>
+    <button>Get Users</button>
+    <ul></ul>
+
+    <script>
+    const getUserData = () => {    
+        fetch("http://localhost:3000/getData")
+            .then(data => data.json())
+            .then(json => {
+                let userInfo = "";
+                json.forEach(user => {
+                    userInfo += `<li>
+                          <strong>Name: ${user.name}</strong>
+                          <p>Age: ${user.age}</p>
+                        </li>`;
+                    document.querySelector('ul').innerHTML = userInfo;    
+                });
+            })
+            .catch(err => console.error(err));
+    }
+
+    document.querySelector('button').addEventListener("click", getUserData);
+    </script>
+</body>
+</html>
