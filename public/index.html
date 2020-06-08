@@ -21,7 +21,7 @@
 
     <script>
     const getUserData = () => {    
-        fetch("http://localhost:3000/getData")
+        fetch("/getData")
             .then(data => data.json())
             .then(json => {
                 let userInfo = "";

@@ -21,6 +21,10 @@ app.get("/getData", (req, res) => {
           {
               "name": "Joe",
               "age": 24
+          },
+          {
+              "name": "Tony",
+              "age": 19
           }
         ]
     );
